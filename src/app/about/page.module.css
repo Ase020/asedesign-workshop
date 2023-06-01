@@ -1,6 +1,3 @@
-.container {
-}
-
 .imgContainer {
   width: 100%;
   height: 300px;
@@ -21,12 +18,6 @@
   padding: 5px;
 }
 
-.imgTitle {
-}
-
-.imgDesc {
-}
-
 .textContainer {
   display: flex;
   align-items: center;
@@ -39,9 +30,6 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-}
-
-.title {
 }
 
 .desc {
