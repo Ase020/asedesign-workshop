@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 
 import styles from "./navbar.module.css";
+import { Theme } from "..";
 
 const links = [
   //   {
@@ -43,6 +46,7 @@ const Navbar = () => {
       </Link>
 
       <div className={styles.links}>
+        <Theme />
         {links.map((link) => (
           <Link href={link.url} key={link.id} className={styles.link}>
             {link.title}
