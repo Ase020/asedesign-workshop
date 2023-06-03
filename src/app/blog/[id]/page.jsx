@@ -3,8 +3,9 @@ import styles from "./page.module.css";
 import { notFound } from "next/navigation";
 
 async function getData(id) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-    cache: "no-store",
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+    // cache: "no-store",
+    next: { revalidate: 10 },
   });
 
   if (!res.ok) {
@@ -15,13 +16,13 @@ async function getData(id) {
 }
 
 const BlogPost = async ({ params }) => {
-  const data = await getData(params.id);
+  const { title, desc, content, image, username } = await getData(params.id);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.info}>
-          <h1 className={styles.title}>{data.title}</h1>
-          <p className={styles.desc}>{data.body}</p>
+          <h1 className={styles.title}>{title}</h1>
+          <p className={styles.desc}>{desc}</p>
           <div className={styles.author}>
             <Image
               src="https://images.pexels.com/photos/16787103/pexels-photo-16787103/free-photo-of-fashion-man-people-woman.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
@@ -30,20 +31,15 @@ const BlogPost = async ({ params }) => {
               height={40}
               className={styles.avatar}
             />
-            <span className={styles.username}>Felix Ase</span>
+            <span className={styles.username}>{username}</span>
           </div>
         </div>
         <div className={styles.imageContainer}>
-          <Image
-            src="https://images.pexels.com/photos/16787103/pexels-photo-16787103/free-photo-of-fashion-man-people-woman.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            alt=""
-            fill={true}
-            className={styles.image}
-          />
+          <Image src={image} alt="" fill={true} className={styles.image} />
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>{data.body}</p>
+        <p className={styles.text}>{content}</p>
       </div>
     </div>
   );
