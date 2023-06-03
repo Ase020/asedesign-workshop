@@ -1,18 +1,27 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { notFound } from "next/navigation";
 
-const BlogPost = () => {
+async function getData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    return notFound();
+  }
+
+  return res.json();
+}
+
+const BlogPost = async ({ params }) => {
+  const data = await getData(params.id);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.info}>
-          <h1 className={styles.title}>Technical Writing</h1>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            quae dolor, optio voluptatibus magnam iure esse tempora beatae. A
-            suscipit eos. Animi quibusdam cum omnis officiis voluptatum quo ea
-            eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
+          <h1 className={styles.title}>{data.title}</h1>
+          <p className={styles.desc}>{data.body}</p>
           <div className={styles.author}>
             <Image
               src="https://images.pexels.com/photos/16787103/pexels-photo-16787103/free-photo-of-fashion-man-people-woman.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
@@ -34,17 +43,7 @@ const BlogPost = () => {
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quae
-          dolor, optio voluptatibus magnam iure esse tempora beatae. A suscipit
-          eos. Animi quibusdam cum omnis officiis voluptatum quo ea eveniet?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quae
-          dolor, optio voluptatibus magnam iure esse tempora beatae, a suscipit
-          eos. Animi quibusdam cum omnis officiis voluptatum quo ea eveniet?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quae
-          dolor, optio voluptatibus magnam iure esse tempora beatae, a suscipit
-          eos. Animi quibusdam cum omnis officiis voluptatum quo ea eveniet?
-        </p>
+        <p className={styles.text}>{data.body}</p>
       </div>
     </div>
   );
