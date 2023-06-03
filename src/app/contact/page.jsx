@@ -3,9 +3,9 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Button } from "@/components";
 
-export const data = {
-  title: "aseDesign Contact Information",
-  description: "This is Contact Page",
+export const metadata = {
+  title: "aseDesign | Contact",
+  description: "Reach us anytime via email or social media links provided.",
 };
 
 const Contact = () => {

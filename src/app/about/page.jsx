@@ -2,6 +2,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Button } from "@/components";
 
+export const metadata = {
+  title: "aseDesign | About Us",
+  description: "Get to know who we are and what we do.",
+};
+
 const About = () => {
   return (
     <div className={styles.container}>
