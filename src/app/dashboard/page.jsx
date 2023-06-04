@@ -149,6 +149,7 @@ const Dashboard = () => {
               </div>
             ))
           )}
+          <hr className={styles.hr} />
         </div>
 
         <form className={styles.newPost} onSubmit={handleSubmit}>
