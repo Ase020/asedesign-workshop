@@ -44,3 +44,24 @@
 .item:hover .title {
   color: #53c28b;
 }
+
+@media screen and (max-width: 720px) {
+  .mainTitle {
+    font-size: 70px;
+    text-align: center;
+  }
+
+  .selectTitle {
+    text-align: center;
+  }
+
+  .items {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .container {
+    margin-bottom: 30px;
+  }
+}
