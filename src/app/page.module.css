@@ -51,3 +51,20 @@
     transform: translateY(10px);
   }
 }
+
+@media screen and (max-width: 720px) {
+  .container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .item {
+    padding: 20px;
+    align-items: center;
+  }
+
+  .title,
+  .desc {
+    text-align: center;
+  }
+}
