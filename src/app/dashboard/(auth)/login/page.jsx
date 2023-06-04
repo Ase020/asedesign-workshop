@@ -5,12 +5,6 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
-
-export const metadata = {
-  title: "aseDesign | Log In",
-  description: "Home of the best digital services on the Web.",
-};
 
 const Login = () => {
   const session = useSession();

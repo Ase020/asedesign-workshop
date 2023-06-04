@@ -5,11 +5,6 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 
-export const metadata = {
-  title: "aseDesign | Sign Up",
-  description: "Home of the best digital services on the Web.",
-};
-
 const SignUp = () => {
   const [error, setError] = useState(null);
 
