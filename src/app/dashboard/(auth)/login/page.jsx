@@ -1,7 +1,9 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import styles from "./page.module.css";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const metadata = {
   title: "aseDesign | Log In",
@@ -9,6 +11,34 @@ export const metadata = {
 };
 
 const Login = () => {
+  const session = useSession();
+  const router = useRouter();
+
+  if (session.status === "loading") {
+    return (
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Image
+          src="/loader.svg"
+          width={50}
+          height={50}
+          alt="loader"
+          className="object-contain"
+        />
+      </div>
+    );
+  }
+
+  if (session.status === "authenticated") {
+    return router?.push("/dashboard");
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
