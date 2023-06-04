@@ -46,3 +46,33 @@
   color: #999;
   text-align: justify;
 }
+
+@media screen and (max-width: 720px) {
+  .container {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .desc {
+    display: none;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+
+  .author {
+    margin-top: 20px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .content {
+    font-size: 20px;
+    line-height: 28px;
+    text-align: unset;
+  }
+}

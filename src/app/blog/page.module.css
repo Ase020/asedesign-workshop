@@ -17,3 +17,24 @@
   font-size: 16x;
   color: #999;
 }
+
+.hr {
+  width: 80%;
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  .mainContainer {
+    padding: 20px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hr {
+    margin: 50px;
+    display: flex;
+  }
+}
