@@ -41,3 +41,8 @@
   font-size: 16px;
   text-transform: capitalize;
 }
+
+.link {
+  text-decoration: underline;
+  color: #7d7c7c;
+}

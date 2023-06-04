@@ -4,6 +4,7 @@ import { signIn, useSession } from "next-auth/react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const metadata = {
   title: "aseDesign | Log In",
@@ -65,7 +66,26 @@ const Login = () => {
         <button className={styles.button}>Log In</button>
       </form>
 
-      <button onClick={() => signIn("google")}>Log in with Google</button>
+      <button
+        onClick={() => signIn("google")}
+        className={styles.button + " " + styles.google}
+      >
+        Login with Google
+      </button>
+
+      <button
+        onClick={() => {
+          signIn("github");
+        }}
+        className={styles.button + " " + styles.github}
+      >
+        Login with Github
+      </button>
+
+      <span className={styles.or}>- OR -</span>
+      <Link className={styles.link} href="/dashboard/signup">
+        Create new account
+      </Link>
     </div>
   );
 };

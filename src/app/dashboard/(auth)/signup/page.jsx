@@ -67,7 +67,9 @@ const SignUp = () => {
       </form>
       {error && "Something went wrong!"}
 
-      <Link href="/dashboard/login">Login with an existing account</Link>
+      <Link href="/dashboard/login" className={styles.link}>
+        Login with an existing account
+      </Link>
     </div>
   );
 };
