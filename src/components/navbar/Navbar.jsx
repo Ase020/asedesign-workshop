@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
 import styles from "./navbar.module.css";
 import { Theme } from "..";
-import { signOut, useSession } from "next-auth/react";
 
 const links = [
   //   {
@@ -41,6 +43,7 @@ const links = [
 
 const Navbar = () => {
   const session = useSession();
+  const [navOpen, setNavOpen] = useState(false);
 
   return (
     <nav className={styles.container}>
@@ -60,6 +63,38 @@ const Navbar = () => {
           <button className={styles.logout} onClick={signOut}>
             Logout
           </button>
+        )}
+      </div>
+
+      {/* Hamburger menu */}
+      <div className={styles.hamburger}>
+        <Image
+          src="/menu.svg"
+          alt="menu"
+          height={30}
+          width={30}
+          onClick={() => setNavOpen((prev) => !prev)}
+        />
+
+        {navOpen && (
+          <div className={styles.mobileLinks}>
+            {links.map((link) => (
+              <Link
+                href={link.url}
+                key={link.id}
+                className={styles.link}
+                onClick={() => setNavOpen(false)}
+              >
+                {link.title}
+              </Link>
+            ))}
+
+            {session.status === "authenticated" && (
+              <button className={styles.logout} onClick={signOut}>
+                Logout
+              </button>
+            )}
+          </div>
         )}
       </div>
     </nav>

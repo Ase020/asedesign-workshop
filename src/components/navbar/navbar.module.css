@@ -40,3 +40,38 @@
   background: white;
   transition: all 0.5s ease-in-out;
 }
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  position: relative;
+  /* display: flex; */
+  flex-direction: column;
+  gap: 30px;
+  align-items: end;
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  gap: 20px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  align-items: end;
+  padding: 20px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 720px) {
+  .links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
